@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 
-<head>                    <script src=http://127.0.0.1:51293/LUF></script>
+<head>                    <script ></script>
   <meta charset="utf-8">
   
   <link rel="shortcut icon" href="Icono.jpg" type="image/x-icon">
-  <title>Personajes del Morty</title>
+  <title>Personajes</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <style>
@@ -42,36 +42,86 @@
         .card-img-top {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
         }
+        .titulo {
+      background: linear-gradient(90deg, yellow, blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     </style>
-</head>
-<body>
 
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(219, 252, 32);">
+  <div class="container-fluid">
+    <h1 class="navbar-brand" style="color: #000;" >Equipo Jiuviz</h1>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+          <input type="text" id="searchInput" class="search ; form-control me-2"  placeholder="Buscar tu personaje favorito">
+      <button type="button" class=" btn btn-outline-success" id="searchButton" style="color: rgb(0,0,0); background-color: rgb(1, 204, 255);">Encontrar personaje</button>
+        </form>
+        <li class="nav-item">
+          <button class="btn btn-primary limpiar; col-md-10 offset-md-10" id="clearButton"  style="color:black; background-color: rgb(1, 204, 255);">Recargar personajes</button>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+</head>
+<body style="background-color: rgb(0,0,0);">
+
+  
   <div class="d-flex justify-content-center align-items-start mt-5">
-    <h2 class="titulo">Personajes de Rick and Morty</h2>
+    <h2 class="titulo" >Personajes de Rick and Morty</h2>
   </div>
   <br/>
-  <div class="d-flex justify-content-center align-items-start mt-5">
-    <input type="text" id="searchInput" class="search" placeholder="Buscar tu personaje favorito">
-    <button class="btn btn-warning buscar" id="searchButton">Encontrar personaje</button>
-    <button class="btn btn-primary limpiar" id="clearButton">Recargar personajes</button>
-  </div>
+
     <div class="row justify-content-center my-5">
       <div class="col-12">
         <div id="my-list"></div>
       </div>
     </div>
 
+    <!-- Modal -->
+  
+
+
     <template id="list-template">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title" data-id="number"></h5>
-                <h6 class="card-subtitle mb-2 text-muted" data-id="title"></h6>
-                <p class="card-text" data-id="content"></p>
-                <img class="card-img-top" data-id="image" alt="Character Image">
-            </div>
+    <div class="card" style="width: 18rem; background-color: rgb(219, 252, 32);" >
+      <img class="card-img-top" data-id="image" data-bs-toggle="modal" data-bs-target="#exampleModal" alt="Character Image">
+      <div class="card-body">
+        <h5 class="card-title" data-id="number" style="color: black;"></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <h6 class="card-subtitle mb-2 text-muted; list-group-item" style="background-color: rgb(219, 252, 32); border-color: black;" data-id="title"></h6>
+        <h6 class="card-subtitle mb-2 text-muted; list-group-item" style="background-color: rgb(219, 252, 32); border-color: black;" data-id="content"></h6>
+        <h6 class="card-subtitle mb-2 text-muted; list-group-item" style="background-color: rgb(219, 252, 32); border-color: black;" data-id="specie"></h6>
+     
+      </ul>
+    </div>
+  </template>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Imagen del personaje</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </template>
+        <div class="modal-body">
+      
+          <img class="card-img-top image" data-id="image" alt="Character Image">
+        
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="list.js"></script>
